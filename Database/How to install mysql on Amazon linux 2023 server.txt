@@ -1,0 +1,64 @@
+
+How to install mysql on Amazon linux 2023 server
+
+sudo su
+
+dnf install mariadb105 -y
+
+mysql -u admin -p -h database-1.cgaaf9bcrghw.ap-south-1.rds.amazonaws.com
+
+Enter password
+
+show databases;
+
+create database test;
+
+(Ctrl+C) Exit from database server
+
+create text file => vi table.txt     {paste(database data for create  table)}
+
+mysql -u admin -p -h database-1.cgaaf9bcrghw.ap-south-1.rds.amazonaws.com
+
+show databases;
+
+use <database_name>    => use test
+
+show tables;
+
+(Ctrl+C) Exit from database server
+
+mysql -u admin -p -h database-1.cgaaf9bcrghw.ap-south-1.rds.amazonaws.com < table.txt
+
+show databases;
+
+use test
+
+show tables;
+
+describe ASSETS;
+
+(Ctrl+C) Exit from database server
+
+
+
+How to export database to local server
+
+Create a file and paste shell script that automatically export data  [vi export.sh]
+
+allow permission to script file by  [chmod 777 export.sh]
+
+Provide following data
+MySQL db: test
+
+MySQL user: admin
+
+MySQL host: (database_endpoint)database-1.cgaaf9bcrghw.ap-south-1.rds.amazonaws.com
+
+MySQL  password:
+
+
+
+execute script file by [./export.sh > exportfile]
+ 
+
+

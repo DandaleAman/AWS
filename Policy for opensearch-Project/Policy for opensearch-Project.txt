@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "es:*"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:es:ap-south-1:671916260115:domain/mynewdomain/*"
+        }
+    ]
+}
+
+
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "es:*",
+      "Resource": "arn:aws:es:ap-south-1:671916260115:domain/mynewdomain/*"
+    }
+  ]
+}
+
+
+

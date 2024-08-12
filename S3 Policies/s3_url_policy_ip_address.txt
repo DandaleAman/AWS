@@ -1,0 +1,24 @@
+#HOW TO GIVE ACCESS OF S3 OBJECT TO SPECIFIC IP ADDRESS 
+
+{
+    "Id": "PolicyId2",
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowIPmix",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::s3-bucket1245",
+                "arn:aws:s3:::s3-bucket1245/*"
+            ],
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": [
+                        "49.36.223.98/32"
+                    ]
+                },
+        }
+    ]
+}

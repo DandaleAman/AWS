@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters:
+  KeyName:
+    Description: Name of SSH KeyPair
+    Type: 'AWS::EC2::KeyPair::KeyName'
+    ConstraintDescription: Provide the name of an existing SSH key pair
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0da59f1af71ea4ad2
+      SecurityGroupIds:
+        - sg-0734bb623ce1ace54
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          yum update -y
+          yum install -y nginx
+          dnf install mariadb105 -y # or replace with your preferred database package
+          yum install git -y
+          yum install docker -y
+          systemctl start nginx
+          systemctl enable nginx
+          systemctl start mysql # or start your preferred database service
+          systemctl enable mysql
+          systemctl enable docker
+          systemctl start docker
+          yum install -y httpd
+
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow HTTP and SSH traffic
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+      VpcId: vpc-0ed78ddb4cc11fd3f

@@ -1,0 +1,16 @@
+
+aws configure
+
+aws iam create-user --user-name iamcliuser
+
+aws iam create-group --group-name cligrp
+
+aws iam add-user-to-group --user-name iamcliuser --group-name cligrp
+
+aws iam get-group --group-name cligrp
+
+aws iam create-access-key --user-name iamcliuser
+
+aws iam create-login-profile --generate-cli-skeleton > create-login-profile.json
+
+aws iam create-login-profile --user-name iamcliuser --password Password@123

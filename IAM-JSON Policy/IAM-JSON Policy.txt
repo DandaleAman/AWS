@@ -1,0 +1,9 @@
+
+Which specific permissions are required to IAM-user to uplaod object in S3 bucket.
+
+1. "Action": "s3:ListBucket"
+2. "Action": "s3:ListAllMyBuckets"
+3. "Action": "s3:CreateBucket"
+4. "Action": "s3:PutObject"
+
+5. "Action": "s3:GetObject"  ==> This permission allows the IAM user to retrive objects from the s3 bucket.(Throught this permission we can view the object that generated throught Presign URL)
